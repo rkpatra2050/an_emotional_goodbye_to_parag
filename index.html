@@ -383,8 +383,56 @@
       margin-top: 3rem;
     }
 
-    @media (max-width: 700px) {
-      .tribute-grid { grid-template-columns: 1fr; }
+    /* ─── MOBILE RESPONSIVE ─── */
+    @media (max-width: 768px) {
+
+      /* Splash */
+      .splash-emoji { font-size: 2.8rem; }
+      .splash-tagline { font-size: 0.7rem; letter-spacing: 0.2em; }
+      .splash-content { padding: 1.2rem; }
+
+      /* Hero */
+      .hero-content { padding: 1.2rem; }
+      .hero-quote { margin-top: 1.5rem; font-size: 1rem; }
+      .hero-quote::before, .hero-quote::after { font-size: 2rem; }
+      .scroll-hint { bottom: 1.5rem; }
+
+      /* Sections */
+      section { padding: 4rem 1.2rem; }
+      .section-label { font-size: 0.65rem; letter-spacing: 0.25em; }
+
+      /* Tribute */
+      .tribute-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .tribute-card { padding: 1.5rem; }
+
+      /* Memories */
+      .quote-block { padding: 1.5rem 1.2rem; }
+      .appreciation-note { padding: 2rem 1.2rem; }
+
+      /* Timeline */
+      .timeline::before { left: 22px; }
+      .timeline-item { gap: 1rem; margin-bottom: 2rem; }
+      .timeline-dot { width: 44px; height: 44px; font-size: 1.2rem; flex-shrink: 0; }
+      .timeline-body h3 { font-size: 1.1rem; }
+      .timeline-body p { font-size: 0.85rem; }
+
+      /* Wishes */
+      .wishes-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+      /* Farewell */
+      #farewell { min-height: 60vh; padding: 3rem 1.2rem; }
+      .farewell-content { padding: 1rem; }
+      .farewell-message { font-size: 0.9rem; }
+      .farewell-signature { font-size: 1.2rem; margin-top: 2rem; }
+
+      /* Footer */
+      footer { padding: 1.5rem 1rem; }
+      footer p { font-size: 0.7rem; letter-spacing: 0.1em; }
+    }
+
+    @media (max-width: 480px) {
+      .wishes-grid { grid-template-columns: 1fr; }
+      .timeline-item { gap: 0.8rem; }
     }
 
     .tribute-card {
