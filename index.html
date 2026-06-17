@@ -391,17 +391,24 @@
       body { overflow-x: hidden !important; max-width: 100vw !important; }
 
       /* Splash */
-      #splash { overflow: hidden !important; max-width: 100vw; }
-      .splash-bg { transform: none !important; }
+      #splash { overflow: hidden !important; max-width: 100vw; background: #0a0500; }
+      .splash-bg {
+        transform: none !important;
+        background-size: contain !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+      }
       .splash-emoji { font-size: 2.8rem; }
       .splash-tagline { font-size: 0.65rem; letter-spacing: 0.15em; }
       .splash-content { padding: 1rem; width: 100%; max-width: 100vw; }
 
-      /* Hero — KEY FIX: reset scale(1.05) which was causing right-side overflow */
-      .hero { overflow: hidden !important; max-width: 100vw; }
+      /* Hero — image fully visible on mobile */
+      .hero { overflow: hidden !important; max-width: 100vw; background: #030100; }
       .hero-bg {
         transform: scale(1) !important;
-        background-position: center center !important;
+        background-size: contain !important;
+        background-position: top center !important;
+        background-repeat: no-repeat !important;
         inset: 0 !important;
       }
       .hero-bg.zoomed { transform: scale(1) !important; }
