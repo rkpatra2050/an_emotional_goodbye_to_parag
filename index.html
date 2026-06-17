@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farewell Parag Ved | TPRM Team</title>
+  <meta name="description" content="A heartfelt farewell to our beloved manager Parag Ved from the TPRM Team. Thank you for your leadership, guidance, and inspiration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #d4a843;
+      --gold-light: #f0c96a;
+      --gold-dark: #a07830;
+      --cream: #fdf6e3;
+      --warm-white: #fff8f0;
+      --text-dark: #1a0f00;
+      --text-mid: #3d2b0f;
+      --amber: #e8952a;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    /* ─── SPLASH SCREEN ─── */
+    #splash {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #0a0500;
+      opacity: 1;
+      transition: opacity 1.4s ease;
+    }
+
+    #splash.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #splash.hidden {
+      display: none;
+    }
+
+    .splash-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('ChatGPT Image Jun 17, 2026, 10_14_39 PM.png');
+      background-size: cover;
+      background-position: center top;
+      opacity: 0.25;
+      filter: blur(2px);
+    }
+
+    .splash-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .splash-emoji {
+      font-size: 4rem;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    .splash-tagline {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.3s;
+    }
+
+    .splash-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      font-weight: 300;
+      color: var(--warm-white);
+      line-height: 1.1;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 0.7s;
+    }
+
+    .splash-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .splash-from {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.6);
+      margin-top: 1.8rem;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1.3s;
+    }
+
+    .splash-from span {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .splash-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 1.5rem auto;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1s;
+    }
+
+    /* floating particles */
+    .particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+    }
+
+    /* progress bar */
+    .splash-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--gold-dark), var(--gold-light));
+      width: 0%;
+      transition: width linear;
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    #main {
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    #main.visible {
+      opacity: 1;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('ChatGPT Image Jun 17, 2026, 10_14_39 PM.png');
+      background-size: cover;
+      background-position: center top;
+      transform: scale(1.05);
+      transition: transform 8s ease-out;
+    }
+
+    .hero-bg.zoomed {
+      transform: scale(1);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 2, 0, 0.45) 0%,
+        rgba(10, 5, 0, 0.55) 40%,
+        rgba(5, 2, 0, 0.80) 80%,
+        rgba(3, 1, 0, 1) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(212, 168, 67, 0.4);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeDown 0.8s ease forwards 0.2s;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 10vw, 8rem);
+      font-weight: 300;
+      color: var(--warm-white);
+      line-height: 1;
+      opacity: 0;
+      animation: fadeDown 1s ease forwards 0.5s;
+    }
+
+    .hero-name span {
+      display: block;
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-role {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.8rem;
+      opacity: 0;
+      animation: fadeDown 1s ease forwards 0.9s;
+    }
+
+    .hero-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      margin-top: 2.5rem;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 1.2s;
+    }
+
+    .hero-quote::before {
+      content: '"';
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 0;
+      vertical-align: -0.5em;
+      margin-right: 0.2rem;
+    }
+
+    .hero-quote::after {
+      content: '"';
+      font-size: 3rem;
+      color: var(--gold);
+      line-height: 0;
+      vertical-align: -0.5em;
+      margin-left: 0.2rem;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards 2s;
+    }
+
+    .scroll-hint p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .scroll-arrow {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    /* ─── SECTIONS ─── */
+    body {
+      background-color: #070300;
+    }
+
+    section {
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 400;
+      color: var(--warm-white);
+      line-height: 1.2;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    /* ─── TRIBUTE SECTION ─── */
+    #tribute {
+      background: linear-gradient(to bottom, #070300, #0d0600);
+    }
+
+    .tribute-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 700px) {
+      .tribute-grid { grid-template-columns: 1fr; }
+    }
+
+    .tribute-card {
+      background: rgba(212, 168, 67, 0.05);
+      border: 1px solid rgba(212, 168, 67, 0.15);
+      border-radius: 16px;
+      padding: 2.2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+    }
+
+    .tribute-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(212,168,67,0.08), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .tribute-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(212, 168, 67, 0.4);
+      background: rgba(212, 168, 67, 0.08);
+    }
+
+    .tribute-card:hover::before {
+      opacity: 1;
+    }
+
+    .tribute-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .tribute-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      margin-bottom: 0.8rem;
+    }
+
+    .tribute-card p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+    }
+
+    /* ─── MEMORY SECTION ─── */
+    #memories {
+      background: linear-gradient(to bottom, #0d0600, #130800);
+    }
+
+    .quote-block {
+      position: relative;
+      padding: 3rem;
+      background: rgba(212, 168, 67, 0.04);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 16px 16px 0;
+      margin: 2rem 0;
+    }
+
+    .quote-block blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+    }
+
+    .quote-attribution {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-top: 1rem;
+    }
+
+    .appreciation-note {
+      background: linear-gradient(135deg, rgba(212,168,67,0.08), rgba(232,149,42,0.05));
+      border: 1px solid rgba(212,168,67,0.2);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .appreciation-note .star-badge {
+      position: absolute;
+      top: -14px;
+      left: 2rem;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #1a0f00;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+    }
+
+    .appreciation-note p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.9;
+    }
+
+    .appreciation-note p strong {
+      color: var(--gold-light);
+      font-weight: 500;
+    }
+
+    /* ─── QUALITIES SECTION ─── */
+    #qualities {
+      background: linear-gradient(to bottom, #130800, #0a0400);
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 3rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .timeline-item.animate-in {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .timeline-dot {
+      flex-shrink: 0;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(212,168,67,0.2), rgba(232,149,42,0.1));
+      border: 1px solid rgba(212,168,67,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .timeline-body h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+      padding-top: 0.7rem;
+    }
+
+    .timeline-body p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.8;
+    }
+
+    /* ─── WISHES SECTION ─── */
+    #wishes {
+      background: linear-gradient(to bottom, #0a0400, #060200);
+      text-align: center;
+    }
+
+    .wishes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 700px) {
+      .wishes-grid { grid-template-columns: 1fr; }
+    }
+
+    .wish-chip {
+      background: rgba(212,168,67,0.06);
+      border: 1px solid rgba(212,168,67,0.2);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+      transition: all 0.3s ease;
+    }
+
+    .wish-chip:hover {
+      background: rgba(212,168,67,0.12);
+      border-color: rgba(212,168,67,0.4);
+      color: rgba(255,255,255,0.9);
+      transform: translateY(-4px);
+    }
+
+    .wish-chip .wish-icon {
+      font-size: 1.8rem;
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ─── FINAL FAREWELL ─── */
+    #farewell {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .farewell-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('ChatGPT Image Jun 17, 2026, 10_14_39 PM.png');
+      background-size: cover;
+      background-position: center bottom;
+      opacity: 0.15;
+    }
+
+    .farewell-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(10,5,0,0.3) 0%, rgba(5,2,0,0.95) 100%);
+    }
+
+    .farewell-content {
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      max-width: 750px;
+    }
+
+    .farewell-content .big-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 300;
+      color: var(--warm-white);
+      line-height: 1;
+    }
+
+    .farewell-content .big-text em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .farewell-message {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.9;
+      margin-top: 2rem;
+    }
+
+    .farewell-signature {
+      margin-top: 3rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .farewell-hearts {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      animation: heartbeat 1.5s ease-in-out infinite;
+      display: block;
+    }
+
+    /* ─── DIVIDER ─── */
+    .ornament-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 4rem 0;
+    }
+
+    .ornament-divider .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(212,168,67,0.3), transparent);
+    }
+
+    .ornament-divider .diamond {
+      color: var(--gold);
+      font-size: 0.7rem;
+    }
+
+    /* ─── KEYFRAMES ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── STAGGERED REVEAL ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #030100;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.2);
+    }
+
+    footer p span {
+      color: var(--gold);
+    }
+
+    /* Floating hearts animation */
+    .floating-hearts {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .fheart {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: floatHeart 4s ease-in-out forwards;
+    }
+
+    @keyframes floatHeart {
+      0% { opacity: 0; transform: translateY(0) scale(0.5); }
+      20% { opacity: 1; }
+      80% { opacity: 0.6; }
+      100% { opacity: 0; transform: translateY(-200px) scale(1.2); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════════════════ SPLASH SCREEN ═══════════════════════ -->
+  <div id="splash">
+    <div class="splash-bg"></div>
+
+    <div class="particles" id="particles"></div>
+
+    <div class="splash-content">
+      <span class="splash-emoji">🥹</span>
+      <p class="splash-tagline">From the TPRM Team · With All Our Heart</p>
+      <h1 class="splash-title">
+        An Emotional<br/>
+        <em>Goodbye</em><br/>
+        to You, Parag
+      </h1>
+      <div class="splash-divider"></div>
+      <p class="splash-from">With deepest gratitude &amp; love — <span>TPRM Team</span></p>
+    </div>
+
+    <div class="splash-progress" id="splashProgress"></div>
+  </div>
+
+  <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+  <div id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="heroSection">
+      <div class="hero-bg" id="heroBg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+
+        <h1 class="hero-name">
+          Parag
+          <span>Ved</span>
+        </h1>
+        <p class="hero-role">Our Leader · Our Captain · Our Guiding Star</p>
+        <p class="hero-quote">
+          Not a Goodbye — but a See You Soon, Captain.
+          You led us not from behind, but from the front.
+        </p>
+      </div>
+      <div class="scroll-hint">
+        <p>Scroll to explore</p>
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
+
+    <!-- TRIBUTE CARDS -->
+    <section id="tribute">
+      <div class="container">
+        <span class="section-label reveal">A Tribute To Our Leader</span>
+        <h2 class="section-title reveal">The Man Who Made<br/><em>Every Challenge Feel Possible</em></h2>
+
+        <div class="tribute-grid">
+          <div class="tribute-card reveal">
+            <span class="tribute-icon">🧭</span>
+            <h3>The Captain's Clarity</h3>
+            <p>Parag had a rare gift — the ability to understand the heart of every requirement within moments. Complex problems became simple paths under his steady guidance. He never lost the team in the fog; he always held the compass.</p>
+          </div>
+
+          <div class="tribute-card reveal">
+            <span class="tribute-icon">🛡️</span>
+            <h3>Standing in Front</h3>
+            <p>A true captain stands between the storm and his crew. Parag always placed himself at the forefront — absorbing pressure, creating space for the team to breathe, think, and deliver their best work without fear.</p>
+          </div>
+
+          <div class="tribute-card reveal">
+            <span class="tribute-icon">🌱</span>
+            <h3>The Nurturing Guide</h3>
+            <p>He didn't just manage tasks — he grew people. Every interaction, every review, every meeting left the team a little more confident, a little more capable, a little more inspired to push their own boundaries.</p>
+          </div>
+
+          <div class="tribute-card reveal">
+            <span class="tribute-icon">⚡</span>
+            <h3>Sharp & Decisive</h3>
+            <p>While others deliberated, Parag decided. His quick grasp of situations and calm, precise decision-making kept the project on course — even in the most turbulent waters. That clarity was our anchor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMORIES / APPRECIATION -->
+    <section id="memories">
+      <div class="container">
+        <span class="section-label reveal">Stories & Memories</span>
+        <h2 class="section-title reveal">Moments That<br/><em>Will Stay With Us Forever</em></h2>
+
+        <div class="quote-block reveal">
+          <blockquote>
+            The best leaders don't create followers — they create more leaders.
+            Parag was never just our manager; he was the reason we believed in ourselves.
+          </blockquote>
+          <p class="quote-attribution">— From the heart of the TPRM Team</p>
+        </div>
+
+        <div class="appreciation-note reveal">
+          <span class="star-badge">⭐ A Special Moment</span>
+          <p>
+            There's something deeply meaningful about the moment a leader pauses their busy world to recognize someone's passion. 
+            Parag did exactly that — he took the time to <strong>notice, acknowledge, and genuinely appreciate</strong> a team member who had been quietly pouring their heart into building websites on the side, driven purely by love for the craft.<br/><br/>
+            In that single act of recognition, he did more than say "well done" — he told someone that their passion <strong>matters</strong>, that what they create with dedication is seen and valued. 
+            That kind of appreciation stays with a person for years. It is the mark of a leader who sees beyond deliverables and into the soul of his team.<br/><br/>
+            <strong>Thank you, Parag, for seeing people — not just professionals.</strong>
+          </p>
+        </div>
+
+        <div class="ornament-divider">
+          <div class="line"></div>
+          <div class="diamond">✦</div>
+          <div class="line"></div>
+        </div>
+
+        <div class="quote-block reveal">
+          <blockquote>
+            Every team reflects its leader. Our calmness in chaos, our clarity in confusion,
+            our courage in challenges — all of that was Parag's gift to us.
+          </blockquote>
+          <p class="quote-attribution">— TPRM Team</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUALITIES TIMELINE -->
+    <section id="qualities">
+      <div class="container">
+        <span class="section-label reveal">What Made Him Extraordinary</span>
+        <h2 class="section-title reveal">The Qualities of<br/><em>A True Leader</em></h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">🎯</div>
+            <div class="timeline-body">
+              <h3>Razor-Sharp Understanding</h3>
+              <p>Parag could cut through ambiguity like few others. He grasped requirements quickly and translated complex business needs into clear, actionable direction — saving the team hours of guesswork and keeping everyone aligned.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">🤝</div>
+            <div class="timeline-body">
+              <h3>Unwavering Team Support</h3>
+              <p>He stood in front of the team — not watching from behind. When there was a challenge or a difficult stakeholder conversation, Parag stepped forward first. That kind of courage builds unshakeable trust.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">💡</div>
+            <div class="timeline-body">
+              <h3>Exceptional Guidance</h3>
+              <p>His guidance was never about telling people what to do — it was about helping them discover what they were capable of. Every project meeting had a way of leaving you more informed, more energized, more capable.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">❤️</div>
+            <div class="timeline-body">
+              <h3>Genuine Human Connection</h3>
+              <p>Even in limited moments of interaction, Parag made people feel valued. He had the remarkable ability to leave a lasting impression — not through grand gestures, but through sincere acknowledgment of people's efforts and passions.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">🌟</div>
+            <div class="timeline-body">
+              <h3>Inspiring By Example</h3>
+              <p>You didn't have to work with Parag for long to be inspired. His professionalism, his calm under pressure, and his thoughtful approach to every challenge set a standard the whole team naturally aspired to meet.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WISHES -->
+    <section id="wishes">
+      <div class="container">
+        <span class="section-label reveal">What We Wish For You</span>
+        <h2 class="section-title reveal">As You Step Into<br/><em>Your Next Adventure</em></h2>
+
+        <div class="wishes-grid">
+          <div class="wish-chip reveal">
+            <span class="wish-icon">🚀</span>
+            New horizons that match the magnitude of your talent and vision
+          </div>
+          <div class="wish-chip reveal">
+            <span class="wish-icon">🌅</span>
+            Mornings full of purpose and evenings full of satisfaction
+          </div>
+          <div class="wish-chip reveal">
+            <span class="wish-icon">🏆</span>
+            Teams who are as fortunate to have you as we were
+          </div>
+          <div class="wish-chip reveal">
+            <span class="wish-icon">🌺</span>
+            Opportunities that challenge and excite you in equal measure
+          </div>
+          <div class="wish-chip reveal">
+            <span class="wish-icon">💫</span>
+            The recognition and respect your leadership truly deserves
+          </div>
+          <div class="wish-chip reveal">
+            <span class="wish-icon">🛤️</span>
+            A beautiful journey ahead — full of success, joy, and growth
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL FAREWELL -->
+    <section id="farewell">
+      <div class="farewell-bg"></div>
+      <div class="farewell-overlay"></div>
+      <div class="farewell-content">
+        <p class="big-text reveal">Not Goodbye,<br/><em>See You Soon.</em></p>
+        <p class="farewell-message reveal">
+          Parag, as you walk through the next gate into your new chapter —
+          know that this team carries a piece of you with them.
+          Your calm, your clarity, your courage, and your kindness
+          have quietly shaped each one of us in ways that words can barely hold.<br/><br/>
+          You were more than a manager. You were our captain.
+          And the best captains leave behind ships that can sail on their own.
+          <br/><br/>
+          <em>Thank you for everything.</em>
+        </p>
+        <p class="farewell-signature reveal">— With love & gratitude, TPRM Team 💛</p>
+        <span class="farewell-hearts reveal">🥹 ❤️ 🌟</span>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Made by <span>Rohit❤️</span> from TPRM Team · For <span>Parag Ved</span> · June 2026</p>
+    </footer>
+  </div>
+
+  <!-- Floating hearts container -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <script>
+    // ─── PARTICLES ───
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.width = (Math.random() * 4 + 2) + 'px';
+      p.style.height = p.style.width;
+      p.style.animationDuration = (Math.random() * 8 + 5) + 's';
+      p.style.animationDelay = (Math.random() * 5) + 's';
+      particlesContainer.appendChild(p);
+    }
+
+    // ─── SPLASH PROGRESS + TRANSITION ───
+    const splash = document.getElementById('splash');
+    const main = document.getElementById('main');
+    const progress = document.getElementById('splashProgress');
+    const heroBg = document.getElementById('heroBg');
+
+    const SPLASH_DURATION = 4500; // ms
+    const start = Date.now();
+
+    function updateProgress() {
+      const elapsed = Date.now() - start;
+      const pct = Math.min((elapsed / SPLASH_DURATION) * 100, 100);
+      progress.style.width = pct + '%';
+      if (pct < 100) {
+        requestAnimationFrame(updateProgress);
+      }
+    }
+    requestAnimationFrame(updateProgress);
+
+    setTimeout(() => {
+      splash.classList.add('fade-out');
+      main.classList.add('visible');
+      setTimeout(() => {
+        splash.classList.add('hidden');
+        heroBg.classList.add('zoomed');
+      }, 1400);
+    }, SPLASH_DURATION);
+
+    // ─── SCROLL REVEAL ───
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // ─── TIMELINE ITEMS ───
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const tlObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+          }, 150 * [...timelineItems].indexOf(entry.target));
+        }
+      });
+    }, { threshold: 0.2 });
+    timelineItems.forEach(el => tlObserver.observe(el));
+
+    // ─── FLOATING HEARTS (triggered on scroll to farewell) ───
+    const farewellSection = document.getElementById('farewell');
+    let heartsTriggered = false;
+
+    const farewellObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !heartsTriggered) {
+          heartsTriggered = true;
+          spawnFloatingHearts();
+        }
+      });
+    }, { threshold: 0.3 });
+
+    farewellObserver.observe(farewellSection);
+
+    function spawnFloatingHearts() {
+      const container = document.getElementById('floatingHearts');
+      const hearts = ['❤️', '🧡', '💛', '💕', '🥹', '✨', '💫'];
+
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const h = document.createElement('div');
+          h.className = 'fheart';
+          h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+          h.style.right = (Math.random() * 120) + 'px';
+          h.style.bottom = '20px';
+          h.style.animationDelay = '0s';
+          h.style.animationDuration = (Math.random() * 2 + 3) + 's';
+          container.appendChild(h);
+          setTimeout(() => h.remove(), 5000);
+        }, i * 200);
+      }
+    }
+
+    // ─── PARALLAX on hero bg ───
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const heroBgEl = document.getElementById('heroBg');
+      if (heroBgEl) {
+        heroBgEl.style.transform = `scale(1) translateY(${scrolled * 0.3}px)`;
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
